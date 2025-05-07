@@ -309,7 +309,8 @@ if (NOT (DEFINED ASTC_ARCH))
         # otherwise look for supported vector instructions based on x86_64 host processor.
         # Don't use AVX2 since it builds for x86_64h which does not match x86_64 project,
         # and lastly fall back to NATIVE if no matches found.
-        if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "arm64" OR ${CMAKE_OSX_SYSROOT} STREQUAL "iphoneos")
+        # if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "arm64" OR ${CMAKE_OSX_SYSROOT} STREQUAL "iphoneos")
+        if("${CMAKE_HOST_SYSTEM_PROCESSOR}" STREQUAL "arm64" OR "${CMAKE_OSX_SYSROOT}" STREQUAL "iphoneos")
             set(ASTC_ARCH NEON)
         else()
             include( FindSSE41 )
